@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">My Orders</h1>
+		</div>
+		<nav
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="">All Orders</a> <a
+					class="nav-item nav-link" href="">Orders On Hold</a> <a
+					class="nav-item nav-link" href="">Approved Orders</a> <a
+					class="nav-item nav-link" href="">Orders Delivered</a>
+			</div>
+			<a href="/order/form"><button
+					class="btn btn-outline-btn btn-dark my-2 my-sm-0">New</button></a>
+		</nav>
+
+		<div class="card" th:each="demand : ${demands}">
+			<div class="card-header" th:text="${demand.productName}">Product
+				Name</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb4">
+						<div class="row">
+							<div class="col-md-5">
+								Value: <span th:text="${demand.negotiatedValue}">200.99</span>
+							</div>
+							<div class="col-md-7">
+								Delivery Date <span th:text="${demand.deliveryDate}">2022/02/10</span>
+							</div>
+						</div>
+						<div>Product</div>
+						<div>
+							<input class="form-control" th:value="${demand.productUrl}"
+								value="Product url"></<input>
+						</div>
+						<div>Description</div>
+						<div>
+							<textarea class="form-control" th:text="${demand.description}">Order Description</textarea>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 mb4">
+						<div>
+							<img class="img-thumbnail " th:src="${demand.imageUrl}" src="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
